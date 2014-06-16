@@ -6,11 +6,11 @@
 <body>
 	<h1> Bookmark Manager</h1>
 
-	<ul>
-		<% @links.each do |link| %>
-			<li><a href="<%= link.url %>"<%= link.title %></a></li>
-		<% end %>
-	</ul>
+<ul>
+  <% @links.each do |link| %>
+    <li><a href="<%= link.url %>"><%= link.title %></a></li>
+  <% end %>
+</ul>
 
 </body>
 
