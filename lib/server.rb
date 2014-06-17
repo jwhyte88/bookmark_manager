@@ -8,7 +8,7 @@ env = ENV["RACK_ENV"] || "development"
 # we're telling datamapper to use a prostgres dataase on Localhost. The name will be "bookmark_manager_test" or "bookmark_manager_development" depending on the environment
 DataMapper.setup(:default, "postgres://localhost/bookmark_manager_#{env}")
 
-require './lib/link' # this needsto be done after datamapper is initialised
+require_relative './link' # this needs to be done after datamapper is initialised
 
 # After declaring your models, you should finalise them
 DataMapper.finalize
@@ -20,4 +20,11 @@ DataMapper.auto_upgrade!
 get '/' do
 	@links = Link.all
 	erb :index
+end
+
+post '/links' do
+	url = params["url"]
+	title = params["title"]
+	Link.create(:url => url, :title => title)
+	redirect to('/')
 end
