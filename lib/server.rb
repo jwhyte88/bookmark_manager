@@ -1,5 +1,6 @@
 require 'sinatra'
 require "data_mapper"
+require "debugger"
 
 set :views, Proc.new {File.join(root, '..', "views") }
 set :public_folder, Proc.new { File.join(root, '..', "public") }
@@ -21,6 +22,7 @@ get '/' do
 	@links = Link.all
 	erb :index
 end
+
 
 post '/links' do
 	url = params["url"]
