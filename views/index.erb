@@ -6,12 +6,6 @@
 <body>
 	<h1> Bookmark Manager</h1>
 
-<ul>
-  <% @links.each do |link| %>
-    <li><a href="<%= link.url %>"><%= link.title %></a></li>
-  <% end %>
-</ul>
-
 	<div id="new-link">
 		<form action="/links" method="post">
 			Url: <input type="text" name="url">
@@ -20,6 +14,13 @@
 			<input type="submit" value="Add link">
 		</form>
 	</div>
+
+	<p> Bookmark list:<p>
+	<ul>
+  	<% @links.each do |link| %>
+    <li><a href="http://<%= link.url %>"><%= link.title %></a></li>
+ 	 <% end %>
+	</ul>
 
 </body>
 
